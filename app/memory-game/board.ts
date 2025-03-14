@@ -1,8 +1,8 @@
 export type Tile = {
   id: string
-  index: number
-  active: boolean
-  found: boolean
+  value: number
+  isOpen: boolean
+  hasBeenFound: boolean
 }
 
 function getRandomTile(max: number) {
@@ -32,9 +32,9 @@ export function generateBoard(pairs: number): Tile[] {
 
     board.push({
       id: `tile-${i}`,
-      index: tile,
-      active: false,
-      found: false,
+      value: tile,
+      isOpen: false,
+      hasBeenFound: false,
     })
   }
 
