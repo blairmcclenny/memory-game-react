@@ -30,7 +30,7 @@ export default function GameInstructions() {
         <h3>Winning the Game</h3>
         <p>
           The player with the most points after all of the matches have been
-          made is the winner! If the payers finish with the same number of
+          made is the winner! If the players finish with the same number of
           points, the game is a draw.
         </p>
       </ul>
