@@ -2,7 +2,7 @@ import Shape, { ShapeType } from "./Shape"
 
 export default function Door({ type }: { type: ShapeType }) {
   return (
-    <div className="p-4 bg-white aspect-square">
+    <div className="p-4 bg-white aspect-square rounded-md">
       <Shape type={type} />
     </div>
   )
