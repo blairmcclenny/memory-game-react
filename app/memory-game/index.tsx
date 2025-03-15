@@ -25,7 +25,7 @@ export default function MemoryGame() {
   return (
     <>
       <Score />
-      <div className="grid grid-cols-5 p-4 rounded-md gap-4 max-w-2xl bg-stone-200">
+      <div className="grid grid-cols-5 p-4 rounded-md gap-4 max-w-2xl bg-stone-200 mt-4 mx-auto">
         <Door type="circle" />
         <Door type="crescent" />
         <Door type="diamond" />

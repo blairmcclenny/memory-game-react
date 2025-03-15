@@ -33,8 +33,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${ericaOne.variable} container px-4 mx-auto antialiased`}
       >
-        <header className="py-8 mx-auto text-center">
-          <h1 className="font-serif text-6xl">MATCH GAME</h1>
+        <header className="pt-8 pb-10 mx-auto text-center">
+          <h1 className="font-serif text-6xl mb-2">MATCH GAME</h1>
           <button className="font-bold rounded-md bg-yellow-300 py-2 px-4 tracking-wide">
             Instructions
           </button>
