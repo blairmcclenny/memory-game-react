@@ -22,7 +22,7 @@ export default function MemoryGame() {
   // }, [])
 
   return (
-    <div className="grid grid-cols-4 p-8 bg-gray-100 rounded-lg gap-2">
+    <div className="grid grid-cols-4 p-4 bg-yellow-600 rounded-2xl gap-4 max-w-lg">
       <Door type="circle" />
       <Door type="crescent" />
       <Door type="diamond" />
