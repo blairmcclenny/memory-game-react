@@ -1,4 +1,5 @@
-import Shape, { ShapeType } from "./Shape"
+import Shape from "./Shape"
+import { ShapeType } from "./types"
 
 export default function Tile({
   shape,

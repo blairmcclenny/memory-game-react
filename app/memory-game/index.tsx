@@ -1,13 +1,12 @@
 "use client"
 
 import { Fragment, useEffect, useState } from "react"
-
 import Tile from "./Tile"
-import Score from "./Score"
-import { TileData, generateBoard } from "./utils"
+import { generateTiles } from "./utils"
+import { TileData } from "./types"
 
 export default function MemoryGame() {
-  const [board, setBoard] = useState<TileData[] | []>([])
+  const [tiles, setTiles] = useState<TileData[] | []>([])
 
   // player one score
   // player two score
@@ -20,14 +19,13 @@ export default function MemoryGame() {
   // if no match close open doors after one second and toggle player
 
   useEffect(() => {
-    setBoard(generateBoard())
+    setTiles(generateTiles())
   }, [])
 
   return (
     <>
-      <Score />
       <div className="grid grid-cols-5 p-4 rounded-md gap-4 max-w-2xl bg-stone-200 mt-4 mx-auto">
-        {board.map((tile, i, arr) => (
+        {tiles.map((tile, i, arr) => (
           <Fragment key={`tile-${i}`}>
             <Tile
               onClick={() => console.log("clicked")}
