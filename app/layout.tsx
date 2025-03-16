@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
+import { Geist, Geist_Mono, Erica_One } from "next/font/google"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -10,6 +10,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+})
+
+const ericaOne = Erica_One({
+  variable: "--font-erica-one",
+  subsets: ["latin"],
+  weight: "400",
 })
 
 export const metadata: Metadata = {
@@ -25,13 +31,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} container px-4 mx-auto antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${ericaOne.variable} container px-4 mx-auto antialiased`}
       >
-        <header className="p-8 h-fit">
-          <h1>Match Game</h1>
+        <header className="pt-8 pb-10 mx-auto text-center">
+          <h1 className="font-serif text-6xl mb-2">MATCH GAME</h1>
+          <button className="font-bold rounded-md bg-yellow-300 py-2 px-4 tracking-wide">
+            Instructions
+          </button>
         </header>
         <main>{children}</main>
-        <footer className="p-8">Instructions</footer>
       </body>
     </html>
   )
