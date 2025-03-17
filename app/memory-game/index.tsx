@@ -50,9 +50,7 @@ export default function MemoryGame() {
   }, [])
 
   useEffect(() => {
-    if (tiles.some((tile) => !tile.hasBeenFound)) {
-      console.log("still playing")
-    } else {
+    if (tiles.every((tile) => tile.hasBeenFound)) {
       console.log("YOU WIN!!!")
       reset()
     }
