@@ -7,29 +7,70 @@ import { TileData } from "./types"
 
 export default function MemoryGame() {
   const [tiles, setTiles] = useState<TileData[] | []>([])
+  const [isPaused, setIsPaused] = useState(false)
 
-  // player one score
-  // player two score
-  // current player - default to player one
+  const reset = () => {
+    setTiles(generateTiles())
+  }
 
-  // on match increment current player score
-  // if combined scores are equal to pairs end game and show winner and replay option
-  // if not continue with current player
+  const handleTileClick = (tileIdx: number) => {
+    setTiles((prevTiles) =>
+      prevTiles.map((tile, i) =>
+        i === tileIdx ? { ...tile, isOpen: true } : tile
+      )
+    )
 
-  // if no match close open doors after one second and toggle player
+    const prevTile = tiles.find((tile) => tile.isOpen) as TileData
+
+    if (!prevTile) return
+
+    if (prevTile.shape === tiles[tileIdx].shape) {
+      setTiles((prevTiles) =>
+        prevTiles.map((tile) =>
+          tile.shape === prevTile.shape
+            ? { ...tile, isOpen: false, hasBeenFound: true }
+            : { ...tile, isOpen: false }
+        )
+      )
+      // increment current player score
+    } else {
+      setIsPaused(true)
+      setTimeout(() => {
+        setTiles((prevTiles) =>
+          prevTiles.map((tile) => ({ ...tile, isOpen: false }))
+        )
+        setIsPaused(false)
+        // toggle current player
+      }, 1000)
+    }
+  }
 
   useEffect(() => {
-    setTiles(generateTiles())
+    reset()
   }, [])
+
+  useEffect(() => {
+    if (tiles.some((tile) => !tile.hasBeenFound)) {
+      console.log("still playing")
+    } else {
+      console.log("YOU WIN!!!")
+      reset()
+    }
+  }, [tiles])
 
   return (
     <>
-      <div className="grid grid-cols-5 p-4 rounded-md gap-4 max-w-2xl bg-stone-200 mt-4 mx-auto">
+      <div
+        className={`${
+          isPaused && "pointer-events-none"
+        } grid grid-cols-5 p-4 rounded-md gap-4 max-w-2xl bg-stone-200 mt-4 mx-auto aspect-square`}
+      >
         {tiles.map((tile, i, arr) => (
           <Fragment key={`tile-${i}`}>
             <Tile
-              onClick={() => console.log("clicked")}
+              onClick={() => handleTileClick(i)}
               shape={tile.shape}
+              isOpen={tile.isOpen}
               hasBeenFound={tile.hasBeenFound}
             />
             {i === Math.floor(arr.length / 2) - 1 && (

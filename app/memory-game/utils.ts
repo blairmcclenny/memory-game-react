@@ -25,6 +25,7 @@ export function generateTiles(): TileData[] {
 
     board.push({
       shape,
+      isOpen: false,
       hasBeenFound: false,
     })
   }
