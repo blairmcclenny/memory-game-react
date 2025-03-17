@@ -1,15 +1,11 @@
-import { ShapeType, shapeTypes } from "./Shape"
-
-export type TileData = {
-  shape: ShapeType
-  hasBeenFound: boolean
-}
+import { shapeTypes } from "./Shape"
+import { TileData } from "./types"
 
 function getRandomShape(max: number) {
   return shapeTypes[Math.floor(Math.random() * max)]
 }
 
-export function generateBoard(): TileData[] {
+export function generateTiles(): TileData[] {
   const board: TileData[] = []
   const shapes = shapeTypes.length
   const tiles = shapes * 2
@@ -29,6 +25,7 @@ export function generateBoard(): TileData[] {
 
     board.push({
       shape,
+      isOpen: false,
       hasBeenFound: false,
     })
   }

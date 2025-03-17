@@ -1,3 +1,5 @@
+import { ShapeType } from "./types"
+
 export const shapeTypes = [
   "circle",
   "crescent",
@@ -12,8 +14,6 @@ export const shapeTypes = [
   "rectangle",
   "quadrafoil",
 ] as const
-
-export type ShapeType = (typeof shapeTypes)[number]
 
 export default function Shape({ type }: { type: ShapeType }) {
   switch (type) {
