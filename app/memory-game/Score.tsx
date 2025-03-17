@@ -15,7 +15,7 @@ function Player({ position }: { position: number }) {
 
 export default function Score() {
   return (
-    <div className="font-serif flex justify-center gap-8">
+    <div className="font-serif flex justify-center gap-12">
       <Player position={1} />
       <Player position={2} />
     </div>

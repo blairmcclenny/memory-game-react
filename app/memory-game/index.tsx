@@ -4,6 +4,7 @@ import { Fragment, useEffect, useState } from "react"
 import Tile from "./Tile"
 import { generateTiles } from "./utils"
 import { TileData } from "./types"
+import Score from "./Score"
 
 export default function MemoryGame() {
   const [tiles, setTiles] = useState<TileData[] | []>([])
@@ -50,7 +51,7 @@ export default function MemoryGame() {
   }, [])
 
   useEffect(() => {
-    if (tiles.every((tile) => tile.hasBeenFound)) {
+    if (tiles.length && tiles.every((tile) => tile.hasBeenFound)) {
       console.log("YOU WIN!!!")
       reset()
     }
@@ -58,10 +59,11 @@ export default function MemoryGame() {
 
   return (
     <>
+      <Score />
       <div
         className={`${
           isPaused && "pointer-events-none"
-        } grid grid-cols-5 p-4 rounded-md gap-4 max-w-2xl bg-stone-200 mt-4 mx-auto aspect-square`}
+        } grid grid-cols-5 p-4 rounded-md gap-4 max-w-2xl bg-stone-200 mt-8 mx-auto aspect-square`}
       >
         {tiles.map((tile, i, arr) => (
           <Fragment key={`tile-${i}`}>
