@@ -58,12 +58,12 @@ export default function MemoryGame() {
   }, [tiles])
 
   return (
-    <>
+    <div className="max-w-2xl mx-auto">
       <Score />
       <div
         className={`${
           isPaused && "pointer-events-none"
-        } grid grid-cols-5 p-4 rounded-md gap-4 max-w-2xl bg-stone-200 mt-8 mx-auto aspect-square`}
+        } grid grid-cols-5 p-4 rounded-md gap-4 bg-stone-200 aspect-square`}
       >
         {tiles.map((tile, i, arr) => (
           <Fragment key={`tile-${i}`}>
@@ -79,6 +79,6 @@ export default function MemoryGame() {
           </Fragment>
         ))}
       </div>
-    </>
+    </div>
   )
 }

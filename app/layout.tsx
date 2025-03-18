@@ -47,7 +47,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${ericaOne.variable} container px-4 mx-auto antialiased`}
       >
-        <header className="mb-4 mx-auto text-center">
+        <header className="mb-16 mx-auto text-center">
           <button className="font-bold text-xs rounded-md rounded-tr-none rounded-tl-none bg-yellow-300 py-2 px-4 tracking-wide inline-flex gap-1 items-center cursor-pointer">
             <Book size={20} /> INSTRUCTIONS
           </button>
