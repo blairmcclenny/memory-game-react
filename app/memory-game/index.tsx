@@ -88,7 +88,6 @@ export default function MemoryGame() {
             </Fragment>
           ))}
         </div>
-
         <div
           className={`${
             gameOver
