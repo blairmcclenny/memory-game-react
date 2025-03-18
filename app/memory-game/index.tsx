@@ -63,7 +63,7 @@ export default function MemoryGame() {
       <div
         className={`${
           isPaused && "pointer-events-none"
-        } grid grid-cols-5 p-4 rounded-md gap-4 bg-stone-200 aspect-square`}
+        } grid grid-cols-5 p-2 gap-2 sm:p-4 rounded-md sm:gap-4 bg-stone-200 aspect-square`}
       >
         {tiles.map((tile, i, arr) => (
           <Fragment key={`tile-${i}`}>

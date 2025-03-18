@@ -24,7 +24,7 @@ export default function Tile({
           isOpen || hasBeenFound
             ? "opacity-100 scale-100"
             : "opacity-0 scale-80"
-        } col-start-1 row-start-1 p-4 transition duration-300`}
+        } col-start-1 row-start-1 p-2 sm:p-4 transition duration-300`}
       >
         <Shape type={shape} />
       </div>

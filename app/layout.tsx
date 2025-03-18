@@ -51,7 +51,7 @@ export default function RootLayout({
           <button className="font-bold text-xs rounded-md rounded-tr-none rounded-tl-none bg-yellow-300 py-2 px-4 tracking-wide inline-flex gap-1 items-center cursor-pointer">
             <Book size={20} /> INSTRUCTIONS
           </button>
-          <h1 className="font-serif text-7xl mt-4">
+          <h1 className="font-serif text-4xl sm:text-7xl mt-4">
             <RotatedWord word="MATCH" /> <RotatedWord word="GAME" />
           </h1>
         </header>
