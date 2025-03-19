@@ -17,7 +17,7 @@ export default function Tile({
       onClick={onClick}
       className={`${
         isOpen || hasBeenFound ? "pointer-events-none" : "cursor-pointer"
-      } bg-white aspect-square rounded-md grid grid-cols-1 overflow-hidden`}
+      } bg-white border-2 border-blue-800 aspect-square rounded-md grid grid-cols-1 overflow-hidden`}
     >
       <div
         className={`${

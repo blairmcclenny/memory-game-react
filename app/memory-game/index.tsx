@@ -67,7 +67,7 @@ export default function MemoryGame() {
       <div
         className={`${
           isPaused && "pointer-events-none"
-        } grid grid-cols-1 p-2 sm:p-4 rounded-md bg-stone-200 aspect-square overflow-hidden`}
+        } grid grid-cols-1 p-2 sm:p-4 rounded-md border-2 aspect-square overflow-hidden`}
       >
         <div
           className={`${
@@ -99,7 +99,7 @@ export default function MemoryGame() {
           <div className="text-xl mb-8">Memory Mastery Unlocked!</div>
           <button
             onClick={handlePlayAgainClick}
-            className="font-bold text-xs rounded-md bg-yellow-300 py-2 px-4 tracking-wide inline-flex gap-1 items-center cursor-pointer"
+            className="font-bold text-xs rounded-md border-2 bg-yellow-300 py-2 px-4 tracking-wide inline-flex gap-1 items-center cursor-pointer"
           >
             <Play size={20} />
             PLAY AGAIN
