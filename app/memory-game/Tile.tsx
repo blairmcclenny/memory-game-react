@@ -17,7 +17,7 @@ export default function Tile({
       onClick={onClick}
       className={`${
         isOpen || hasBeenFound ? "pointer-events-none" : "cursor-pointer"
-      } bg-white border-2 border-blue-800 aspect-square rounded-md grid grid-cols-1 overflow-hidden`}
+      } bg-white border-2 aspect-square rounded-md grid grid-cols-1 overflow-hidden`}
     >
       <div
         className={`${
@@ -33,7 +33,7 @@ export default function Tile({
           isOpen || hasBeenFound
             ? "-translate-x-[calc(100%+1px)]"
             : "translate-x-0"
-        } min-w-full min-h-full col-start-1 row-start-1 h-full w-full bg-blue-800 transition`}
+        } min-w-full min-h-full col-start-1 row-start-1 h-full w-full bg-foreground transition`}
       />
     </div>
   )
