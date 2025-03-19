@@ -93,7 +93,7 @@ export default function MemoryGame() {
             gameOver
               ? "pointer-events-auto opacity-100"
               : "pointer-events-none opacity-0"
-          } bg-stone-200 relative transition duration-300 col-start-1 row-start-1 font-bold flex flex-col justify-center items-center`}
+          } bg-stone-100 relative transition duration-300 col-start-1 row-start-1 font-bold flex flex-col justify-center items-center`}
         >
           <h3 className="text-2xl">You Did It!</h3>
           <div className="text-xl mb-8">Memory Mastery Unlocked!</div>
