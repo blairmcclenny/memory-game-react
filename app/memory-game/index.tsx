@@ -11,10 +11,13 @@ export default function MemoryGame() {
   const [tiles, setTiles] = useState<TileData[] | []>([])
   const [isPaused, setIsPaused] = useState(false)
   const [gameOver, setGameOver] = useState(false)
+  const [score, setScore] = useState([0, 0])
+  const [activePlayer, setActivePlayer] = useState(0)
 
   const reset = () => {
     setTiles(generateTiles())
     setGameOver(false)
+    setScore([0, 0])
   }
 
   const handleTileClick = (tileIdx: number) => {
@@ -36,12 +39,18 @@ export default function MemoryGame() {
             : { ...tile, isOpen: false }
         )
       )
+      setScore((prevScore) => {
+        const updatedScore = [...prevScore]
+        updatedScore[activePlayer] += 1
+        return updatedScore
+      })
     } else {
       setIsPaused(true)
       setTimeout(() => {
         setTiles((prevTiles) =>
           prevTiles.map((tile) => ({ ...tile, isOpen: false }))
         )
+        setActivePlayer((prevActivePlayer) => (prevActivePlayer === 0 ? 1 : 0))
         setIsPaused(false)
       }, 1000)
     }
@@ -63,7 +72,7 @@ export default function MemoryGame() {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <Score />
+      <Score playerOneScore={score[0]} playerTwoScore={score[1]} />
       <div
         className={`${
           isPaused && "pointer-events-none"
