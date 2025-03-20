@@ -1,9 +1,9 @@
 function Player({
-  score = 0,
+  score,
   color,
 }: {
   score: number
-  color: "fill-red-500" | "fill-blue-800"
+  color: "fill-red-500" | "fill-blue-500"
 }) {
   const position = (100 / 13) * score
 
@@ -34,11 +34,11 @@ function Player({
   )
 }
 
-export default function Score() {
+export default function Score({ playerOneScore = 0, playerTwoScore = 0 }) {
   return (
     <div className="flex flex-col md:flex-row justify-between items-center font-mono mb-6">
-      <Player score={8} color="fill-red-500" />
-      <Player score={12} color="fill-blue-800" />
+      <Player score={playerOneScore} color="fill-red-500" />
+      <Player score={playerTwoScore} color="fill-blue-500" />
     </div>
   )
 }
