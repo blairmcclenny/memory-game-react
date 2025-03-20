@@ -18,6 +18,7 @@ export default function MemoryGame() {
     setTiles(generateTiles())
     setGameOver(false)
     setScore([0, 0])
+    setActivePlayer(0)
   }
 
   const handleTileClick = (tileIdx: number) => {
