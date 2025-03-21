@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Geist, Geist_Mono, Erica_One } from "next/font/google"
 import "./globals.css"
 import { Book } from "lucide-react"
+import RotatedWord from "./RotatedWord"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,19 +23,6 @@ const ericaOne = Erica_One({
 export const metadata: Metadata = {
   title: "Memory Game",
   description: "A Game for 2 Players",
-}
-
-function RotatedWord({ word }: { word: string }) {
-  return word.split("").map((char: string, i) => (
-    <span
-      key={`word-${i}`}
-      className={`${
-        i % 2 === 0 ? "rotate-6" : "-rotate-6"
-      } inline-block tracking-wider`}
-    >
-      {char}
-    </span>
-  ))
 }
 
 export default function RootLayout({

@@ -5,7 +5,7 @@ import Tile from "./Tile"
 import { generateTiles } from "./utils"
 import { TileData } from "./types"
 import Score from "./Score"
-import { Play } from "lucide-react"
+import Results, { Winner } from "./Results"
 
 export default function MemoryGame() {
   const [tiles, setTiles] = useState<TileData[] | []>([])
@@ -13,12 +13,14 @@ export default function MemoryGame() {
   const [gameOver, setGameOver] = useState(false)
   const [score, setScore] = useState([0, 0])
   const [activePlayer, setActivePlayer] = useState(0)
+  const [winner, setWinner] = useState<Winner>(null)
 
   const reset = () => {
     setTiles(generateTiles())
     setGameOver(false)
     setScore([0, 0])
     setActivePlayer(0)
+    setWinner(null)
   }
 
   const handleTileClick = (tileIdx: number) => {
@@ -68,8 +70,15 @@ export default function MemoryGame() {
   useEffect(() => {
     if (tiles.length && tiles.every((tile) => tile.hasBeenFound)) {
       setGameOver(true)
+      if (score[0] > score[1]) {
+        setWinner("PLAYER ONE")
+      } else if (score[0] < score[1]) {
+        setWinner("PLAYER TWO")
+      } else {
+        setWinner("TIE")
+      }
     }
-  }, [tiles])
+  }, [tiles, score])
 
   return (
     <div className="max-w-2xl mx-auto">
@@ -98,23 +107,11 @@ export default function MemoryGame() {
             </Fragment>
           ))}
         </div>
-        <div
-          className={`${
-            gameOver
-              ? "pointer-events-auto opacity-100"
-              : "pointer-events-none opacity-0"
-          } bg-stone-100 relative transition duration-300 col-start-1 row-start-1 font-bold flex flex-col justify-center items-center`}
-        >
-          <h3 className="text-2xl">You Did It!</h3>
-          <div className="text-xl mb-8">Memory Mastery Unlocked!</div>
-          <button
-            onClick={handlePlayAgainClick}
-            className="font-bold text-xs rounded-md border-2 bg-yellow-300 py-2 px-4 tracking-wide inline-flex gap-1 items-center cursor-pointer"
-          >
-            <Play size={20} />
-            PLAY AGAIN
-          </button>
-        </div>
+        <Results
+          winner={winner}
+          visible={gameOver}
+          onPlayAgainClick={handlePlayAgainClick}
+        />
       </div>
     </div>
   )
