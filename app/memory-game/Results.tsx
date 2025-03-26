@@ -11,7 +11,9 @@ function Message({ winner }: { winner: Winner }) {
           <h3 className="text-4xl font-serif">
             <RotatedWord word={"RED"} /> <RotatedWord word={"WINS!"} />
           </h3>
-          <div className="text-xl mb-8">Somebody’s been practicing!</div>
+          <div className="font-mono text-xl mb-8">
+            Somebody’s been practicing!
+          </div>
         </>
       )
     case "PLAYER TWO":
@@ -20,7 +22,7 @@ function Message({ winner }: { winner: Winner }) {
           <h3 className="text-4xl font-serif">
             <RotatedWord word={"BLUE"} /> <RotatedWord word={"WINS!"} />
           </h3>
-          <div className="text-xl mb-8">Memory game MVP!</div>
+          <div className="font-mono text-xl mb-8">Memory game MVP!</div>
         </>
       )
     case "TIE":
@@ -30,7 +32,7 @@ function Message({ winner }: { winner: Winner }) {
             <RotatedWord word={"IT’S"} /> <RotatedWord word={"A"} />{" "}
             <RotatedWord word={"TIE!"} />
           </h3>
-          <div className="text-xl mb-8">Both players leveled up!</div>
+          <div className="font-mono text-xl mb-8">Both players leveled up!</div>
         </>
       )
     default:
@@ -53,7 +55,7 @@ export default function Results({
         visible
           ? "pointer-events-auto opacity-100"
           : "pointer-events-none opacity-0"
-      } bg-stone-100 relative transition duration-300 col-start-1 row-start-1 flex flex-col justify-center items-center`}
+      } bg-stone-100 relative transition duration-300 col-start-1 row-start-1 flex flex-col justify-center items-center text-center`}
     >
       <Message winner={winner} />
       <button
