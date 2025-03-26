@@ -15,7 +15,11 @@ export default function Instructions() {
       >
         <Book size={20} /> INSTRUCTIONS
       </button>
-      {showModal && createPortal(<GameInstructions />, document.body)}
+      {showModal &&
+        createPortal(
+          <GameInstructions onClose={() => setShowModal(false)} />,
+          document.body
+        )}
     </>
   )
 }

@@ -8,11 +8,11 @@ function H3({ children }: { children: ReactNode }) {
   )
 }
 
-export default function GameInstructions() {
+export default function GameInstructions({ onClose }: { onClose: () => void }) {
   return (
     <div className="absolute inset-0 min-h-screen min-w-screen bg-stone-100 text-center">
       <button
-        // onClick={() => setShowModal(true)}
+        onClick={onClose}
         className="font-bold font-sans text-xs border-2 border-t-0 rounded-md rounded-tr-none rounded-tl-none bg-yellow-300 py-2 px-4 tracking-wide inline-flex gap-1 items-center cursor-pointer"
       >
         <X size={20} /> CLOSE
