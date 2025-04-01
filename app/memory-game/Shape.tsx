@@ -1,4 +1,13 @@
+import Image from "next/image"
+
 import { ShapeType } from "./types"
+
+import diamond from "@/app/shapes/diamond.png"
+import star from "@/app/shapes/star.png"
+import hexagon from "@/app/shapes/hexagon.png"
+import heart from "@/app/shapes/heart.png"
+import oval from "@/app/shapes/oval.png"
+import quatrefoil from "@/app/shapes/quatrefoil.png"
 
 export const shapeTypes = [
   "circle",
@@ -12,7 +21,7 @@ export const shapeTypes = [
   "pentagon",
   "star",
   "rectangle",
-  "quadrafoil",
+  "quadtrefoil",
 ] as const
 
 export default function Shape({ type }: { type: ShapeType }) {
@@ -35,29 +44,11 @@ export default function Shape({ type }: { type: ShapeType }) {
         </svg>
       )
     case "heart":
-      return (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 438.82">
-          <path
-            d="M438.82 41.18c-54.9-54.9-143.92-54.9-198.82 0-54.9-54.9-143.92-54.9-198.82 0-54.9 54.9-54.9 143.92 0 198.82L240 438.82 438.82 240c54.9-54.9 54.9-143.92 0-198.82Z"
-            className="fill-red-500"
-          />
-        </svg>
-      )
+      return <Image src={heart} alt="heart" />
     case "hexagon":
-      return (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480">
-          <path
-            d="M360 32.2H120L0 240l120 207.9h240L480 240 360 32.2z"
-            className="fill-amber-500"
-          />
-        </svg>
-      )
+      return <Image src={hexagon} alt="hexagon" />
     case "diamond":
-      return (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480">
-          <path d="M0 240 240 0l240 240-240 240z" className="fill-lime-500" />
-        </svg>
-      )
+      return <Image src={diamond} alt="diamond" />
     case "triangle":
       return (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480">
@@ -65,13 +56,7 @@ export default function Shape({ type }: { type: ShapeType }) {
         </svg>
       )
     case "oval":
-      return (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480">
-          <g className="fill-emerald-500">
-            <ellipse cx="240" cy="240" rx="240" ry="120" />
-          </g>
-        </svg>
-      )
+      return <Image src={oval} alt="oval" />
     case "square":
       return (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480">
@@ -88,29 +73,15 @@ export default function Shape({ type }: { type: ShapeType }) {
         </svg>
       )
     case "star":
-      return (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480">
-          <path
-            d="M480 240A240 240 0 0 1 240 0 240 240 0 0 1 0 240a240 240 0 0 1 240 240 240 240 0 0 1 240-240Z"
-            className="fill-yellow-500"
-          />
-        </svg>
-      )
+      return <Image src={star} alt="star" />
     case "rectangle":
       return (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480">
           <path d="M80 0h320v480H80z" className="fill-pink-500" />
         </svg>
       )
-    case "quadrafoil":
-      return (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480">
-          <path
-            d="M450.9 169.7a99.4 99.4 0 0 0-140.6 0 99.4 99.4 0 1 0-140.6 0 99.4 99.4 0 1 0 0 140.6 99.4 99.4 0 1 0 140.6 0 99.4 99.4 0 0 0 140.6-140.6ZM169.7 310.3l140.6-140.6"
-            className="fill-purple-500"
-          />
-        </svg>
-      )
+    case "quadtrefoil":
+      return <Image src={quatrefoil} alt="quatrefoil" />
     default:
       return null
   }
