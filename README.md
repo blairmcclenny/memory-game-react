@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Memory Game
+
+This is a two-player memory game built with [Next.js](https://nextjs.org) and React. Players take turns uncovering tiles to find matching pairs. The player with the most matches wins!
+
+## Features
+
+- **Interactive Gameplay**: A fun and engaging memory game for two players.
+- **Dynamic Scoring**: Tracks scores for both players in real-time.
+- **Responsive Design**: Optimized for desktop and mobile devices.
+- **Custom Shapes**: Unique tile shapes rendered using SVGs.
+- **Instructions Modal**: Clear game instructions accessible at any time.
 
 ## Getting Started
 
-First, run the development server:
+To run the app locally, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Clone the repository:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```bash
+   git clone https://github.com/your-repo/memory-game-react.git
+   cd memory-game-react
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. Install dependencies:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to play the game.
+
+## Project Structure
+
+- **`app/`**: Contains all the components and pages for the app.
+  - **`memory-game/`**: Core game logic and components (e.g., tiles, scoring, results).
+  - **`Instructions.tsx`**: Displays the game instructions in a modal.
+  - **`RotatedWord.tsx`**: Adds a playful rotation effect to text.
+- **`globals.css`**: Global styles using Tailwind CSS.
+
+## Technologies Used
+
+- [Next.js](https://nextjs.org) for server-side rendering and routing.
+- [React](https://reactjs.org) for building the UI.
+- [Tailwind CSS](https://tailwindcss.com) for styling.
+- [TypeScript](https://www.typescriptlang.org) for type safety.
+
+## How to Play
+
+1. Each player takes turns flipping two tiles.
+2. If the tiles match, the player scores a point and continues their turn.
+3. If the tiles don’t match, they are flipped back, and the next player takes their turn.
+4. The game ends when all matches are found. The player with the most points wins!
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about the tools and frameworks used in this project, check out:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js Documentation](https://nextjs.org/docs)
+- [React Documentation](https://reactjs.org/docs)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deploying the App
 
-## Deploy on Vercel
+The app can be deployed using [Vercel](https://vercel.com). For deployment instructions, refer to the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License. Feel free to use and modify it as needed.
