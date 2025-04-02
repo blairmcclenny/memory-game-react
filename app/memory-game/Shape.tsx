@@ -8,6 +8,9 @@ import hexagon from "@/app/shapes/hexagon.png"
 import heart from "@/app/shapes/heart.png"
 import oval from "@/app/shapes/oval.png"
 import quatrefoil from "@/app/shapes/quatrefoil.png"
+import square from "@/app/shapes/square.png"
+import crescent from "@/app/shapes/crescent.png"
+import triangle from "@/app/shapes/triangle.png"
 
 export const shapeTypes = [
   "circle",
@@ -35,14 +38,7 @@ export default function Shape({ type }: { type: ShapeType }) {
         </svg>
       )
     case "crescent":
-      return (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480">
-          <path
-            d="M240 0c-43.7 0-84.7 11.7-120 32.1a240 240 0 0 1 0 415.8A240 240 0 1 0 240 0Z"
-            className="fill-sky-500"
-          />
-        </svg>
-      )
+      return <Image src={crescent} alt="crescent" />
     case "heart":
       return <Image src={heart} alt="heart" />
     case "hexagon":
@@ -50,19 +46,11 @@ export default function Shape({ type }: { type: ShapeType }) {
     case "diamond":
       return <Image src={diamond} alt="diamond" />
     case "triangle":
-      return (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480">
-          <path d="M240 60 32.2 420h415.7L240 60z" className="fill-green-500" />
-        </svg>
-      )
+      return <Image src={triangle} alt="triangle" />
     case "oval":
       return <Image src={oval} alt="oval" />
     case "square":
-      return (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480">
-          <path d="M70.3 70.3h339.4v339.4H70.3z" className="fill-teal-500" />
-        </svg>
-      )
+      return <Image src={square} alt="square" />
     case "pentagon":
       return (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480">
