@@ -8,7 +8,7 @@ function Player({
   const position = (100 / 13) * score
 
   return (
-    <div className="overflow-hidden">
+    <div aria-label={`Player score is ${score}`} className="overflow-hidden">
       <div className="flex gap-2 justify-around text-sm p-2">
         {[...Array.from({ length: 13 }, (_, i) => i)].map((num) => (
           <span key={num} className="w-[2ch] text-center">
