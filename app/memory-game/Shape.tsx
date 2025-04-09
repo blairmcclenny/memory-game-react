@@ -213,18 +213,18 @@ export default function Shape({ type }: { type: ShapeType }) {
       return (
         <svg
           aria-label={type}
-          xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 480 480"
+          xmlns="http://www.w3.org/2000/svg"
         >
           <Group>
-            <path
-              d="M480 240A240 240 0 0 1 240 0 240 240 0 0 1 0 240a240 240 0 0 1 240 240 240 240 0 0 1 240-240Z"
+            <polygon
+              points="240,19 296,186 475,186 318,286 378,451 240,343 102,451 162,286 5,186 184,186"
               className="fill-none stroke-yellow-700 stroke-[32]"
               strokeLinejoin="round"
               strokeLinecap="round"
             />
-            <path
-              d="M480 240A240 240 0 0 1 240 0 240 240 0 0 1 0 240a240 240 0 0 1 240 240 240 240 0 0 1 240-240Z"
+            <polygon
+              points="240,19 296,186 475,186 318,286 378,451 240,343 102,451 162,286 5,186 184,186"
               className="fill-yellow-400"
             />
           </Group>
