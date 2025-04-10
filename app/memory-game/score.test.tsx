@@ -1,8 +1,10 @@
-import { render, screen } from "@testing-library/react"
-import { describe, expect, test } from "vitest"
+import { cleanup, render, screen } from "@testing-library/react"
+import { afterEach, describe, expect, test } from "vitest"
 import MemoryGame from "."
 import { shapeTypes } from "./Shape"
 import userEvent from "@testing-library/user-event"
+
+afterEach(cleanup)
 
 describe("Score", () => {
   test("Two matching Tiles increase score", async () => {
@@ -34,5 +36,22 @@ describe("Score", () => {
     await userEvent.click(screen.getAllByLabelText(shapeTypes[0])[1])
 
     expect(playerTwoScore.ariaLabel).toBe("Player score is 1")
+  })
+
+  test("score resets correctly when a new game starts", async () => {
+    render(<MemoryGame />)
+
+    const playerOneScore = screen.getAllByLabelText(/Player score is/i)[0]
+    const playerTwoScore = screen.getAllByLabelText(/Player score is/i)[1]
+
+    for (const shape of shapeTypes) {
+      await userEvent.click(screen.getAllByLabelText(shape)[0])
+      await userEvent.click(screen.getAllByLabelText(shape)[1])
+    }
+
+    await userEvent.click(screen.getByRole("button", { name: /Play Again/i }))
+
+    expect(playerOneScore.ariaLabel).toBe("Player score is 0")
+    expect(playerTwoScore.ariaLabel).toBe("Player score is 0")
   })
 })
