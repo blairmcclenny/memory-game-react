@@ -41,15 +41,15 @@ describe("Score", () => {
   test("score resets correctly when a new game starts", async () => {
     render(<MemoryGame />)
 
-    const playerOneScore = screen.getAllByLabelText(/Player score is/i)[0]
-    const playerTwoScore = screen.getAllByLabelText(/Player score is/i)[1]
-
     for (const shape of shapeTypes) {
       await userEvent.click(screen.getAllByLabelText(shape)[0])
       await userEvent.click(screen.getAllByLabelText(shape)[1])
     }
 
     await userEvent.click(screen.getByRole("button", { name: /Play Again/i }))
+
+    const playerOneScore = screen.getAllByLabelText(/Player score is/i)[0]
+    const playerTwoScore = screen.getAllByLabelText(/Player score is/i)[1]
 
     expect(playerOneScore.ariaLabel).toBe("Player score is 0")
     expect(playerTwoScore.ariaLabel).toBe("Player score is 0")
