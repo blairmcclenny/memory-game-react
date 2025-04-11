@@ -9,12 +9,60 @@ beforeEach(() => render(<MemoryGame />))
 afterEach(cleanup)
 
 describe("Winner is correctly determined", () => {
-  test.skip("Player One (Red) wins", async () => {
+  test("Player One (Red) wins", async () => {
     for (const shape of shapeTypes) {
       await userEvent.click(screen.getAllByLabelText(shape)[0])
       await userEvent.click(screen.getAllByLabelText(shape)[1])
     }
 
-    expect(screen.getByRole("h3", { name: /RED WINS!/i }))
+    const headings = screen.getAllByRole("heading", { level: 3 })
+    const resultsHeading = headings.find((h) => h.textContent === "RED WINS!")
+
+    expect(resultsHeading).toBeTruthy()
+  })
+
+  test("Player Two (Blue) wins", async () => {
+    await userEvent.click(screen.getAllByLabelText(shapeTypes[0])[0])
+    await userEvent.click(screen.getAllByLabelText(shapeTypes[1])[0])
+
+    await new Promise((resolve) => setTimeout(resolve, 1250))
+
+    for (const shape of shapeTypes) {
+      await userEvent.click(screen.getAllByLabelText(shape)[0])
+      await userEvent.click(screen.getAllByLabelText(shape)[1])
+    }
+
+    const headings = screen.getAllByRole("heading", { level: 3 })
+    const resultsHeading = headings.find((h) => h.textContent === "BLUE WINS!")
+
+    expect(resultsHeading).toBeTruthy()
+  })
+
+  test("Players tie", async () => {
+    const shapesLength = shapeTypes.length
+    const shapesSplitIndex = Math.floor(shapesLength / 2)
+
+    const shapesFirstHalf = shapeTypes.slice(0, shapesSplitIndex)
+    const shapesSecondHalf = shapeTypes.slice(shapesSplitIndex, shapesLength)
+
+    for (const shape of shapesFirstHalf) {
+      await userEvent.click(screen.getAllByLabelText(shape)[0])
+      await userEvent.click(screen.getAllByLabelText(shape)[1])
+    }
+
+    await userEvent.click(screen.getAllByLabelText(shapesSecondHalf[0])[0])
+    await userEvent.click(screen.getAllByLabelText(shapesSecondHalf[1])[0])
+
+    await new Promise((resolve) => setTimeout(resolve, 1250))
+
+    for (const shape of shapesSecondHalf) {
+      await userEvent.click(screen.getAllByLabelText(shape)[0])
+      await userEvent.click(screen.getAllByLabelText(shape)[1])
+    }
+
+    const headings = screen.getAllByRole("heading", { level: 3 })
+    const resultsHeading = headings.find((h) => h.textContent === "IT’S A TIE!")
+
+    expect(resultsHeading).toBeTruthy()
   })
 })
