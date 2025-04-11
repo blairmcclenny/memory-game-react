@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, test } from "vitest"
 import { shapeTypes } from "./Shape"
 import userEvent from "@testing-library/user-event"
-import { screen } from "@testing-library/dom"
+import { screen, waitFor } from "@testing-library/dom"
 import { cleanup, render } from "@testing-library/react"
 import MemoryGame from "."
 
@@ -25,7 +25,25 @@ describe("Winner is correctly determined", () => {
     await userEvent.click(screen.getAllByLabelText(shapeTypes[0])[0])
     await userEvent.click(screen.getAllByLabelText(shapeTypes[1])[0])
 
-    await new Promise((resolve) => setTimeout(resolve, 1250))
+    await waitFor(
+      () => {
+        expect(
+          screen
+            .getAllByLabelText(shapeTypes[0])[0]
+            .parentElement?.parentElement?.classList.contains(
+              "pointer-events-none"
+            )
+        ).toBe(false)
+        expect(
+          screen
+            .getAllByLabelText(shapeTypes[1])[0]
+            .parentElement?.parentElement?.classList.contains(
+              "pointer-events-none"
+            )
+        ).toBe(false)
+      },
+      { timeout: 2000 }
+    )
 
     for (const shape of shapeTypes) {
       await userEvent.click(screen.getAllByLabelText(shape)[0])
@@ -53,7 +71,25 @@ describe("Winner is correctly determined", () => {
     await userEvent.click(screen.getAllByLabelText(shapesSecondHalf[0])[0])
     await userEvent.click(screen.getAllByLabelText(shapesSecondHalf[1])[0])
 
-    await new Promise((resolve) => setTimeout(resolve, 1250))
+    await waitFor(
+      () => {
+        expect(
+          screen
+            .getAllByLabelText(shapesSecondHalf[0])[0]
+            .parentElement?.parentElement?.classList.contains(
+              "pointer-events-none"
+            )
+        ).toBe(false)
+        expect(
+          screen
+            .getAllByLabelText(shapesSecondHalf[1])[0]
+            .parentElement?.parentElement?.classList.contains(
+              "pointer-events-none"
+            )
+        ).toBe(false)
+      },
+      { timeout: 2000 }
+    )
 
     for (const shape of shapesSecondHalf) {
       await userEvent.click(screen.getAllByLabelText(shape)[0])
