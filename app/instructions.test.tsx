@@ -12,30 +12,21 @@ describe("Instructions Modal", () => {
 
     await userEvent.click(openBtn)
 
-    const headings = screen.getAllByRole("heading", { level: 2 })
-    const instructionsHeading = headings.find(
-      (h) => h.textContent === "INSTRUCTIONS"
-    )
-
-    await waitFor(() => {
-      expect(instructionsHeading).toBeTruthy()
-    })
+    const modal = screen.getByRole("dialog", { name: /INSTRUCTIONS/i })
+    expect(modal).toBeInTheDocument()
   })
 
-  test.skip("Closes when button clicked", async () => {
+  test("Closes when button clicked", async () => {
     const openBtn = screen.getByRole("button", { name: /INSTRUCTIONS/i })
-    const closeBtn = screen.getByRole("button", { name: /CLOSE/i })
 
     await userEvent.click(openBtn)
+
+    const closeBtn = screen.getByRole("button", { name: /CLOSE/i })
+
     await userEvent.click(closeBtn)
 
-    const headings = screen.getAllByRole("heading", { level: 2 })
-    const instructionsHeading = headings.find(
-      (h) => h.textContent === "INSTRUCTIONS"
-    )
-
     await waitFor(() => {
-      expect(instructionsHeading).toBeFalsy()
+      expect(screen.queryByRole("dialog", { name: /INSTRUCTIONS/i })).toBeNull()
     })
   })
 })
